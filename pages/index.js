@@ -1,6 +1,77 @@
 import Head from 'next/head'
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { stringify } from 'querystring';
+
+const preventDefault = (f) => (e) => {
+	e.preventDefault();
+	f(e);
+};
+
+const base_url =
+	'https://script.google.com/macros/s/AKfycbwaJwpjxblNfvEhkVCXgZCjJvnN0oh1LJAo-QJDGIytmm90LyIn/exec';
+//`https://script.google.com/macros/s/AKfycbwaJwpjxblNfvEhkVCXgZCjJvnN0oh1LJAo-QJDGIytmm90LyIn/exec`;
+
+const sleep = (milliseconds) => {
+	return new Promise((resolve) => setTimeout(resolve, milliseconds));
+};
 
 export default function Home() {
+
+
+	const router = useRouter();
+	const [query, setQuery] = useState('');
+
+	const [langs, setLangs] = useState([{ name: 'English', code: 'eng' ,name: 'Tamil', code: 'tam'}]);
+
+	const [isAuthorized, setAuthorized] = useState(false);
+	const [centrePIN, setCentrePIN] = useState('');
+
+	const handleParam = (setValue) => (e) => {
+		setValue(e.target.value);
+	};
+
+	useEffect((e) => {
+
+		setLangs([{ name: 'Tamil', code: 'tam', name: 'English', code: 'eng' }]);
+
+	}, []);
+
+
+	const verifyPIN = async (pinValue) => {
+		const params = { action: 'verify-pin', data: { pin: pinValue } };
+		const res = await fetch(`${base_url}?d=${JSON.stringify(params)}`);
+		const data = await res.json();
+		return data;
+	};
+
+	const handlePINEntry = preventDefault(async (e) => {
+		const pinValue = e.target.value;
+		if (pinValue.length == 4) {
+			//await sleep(3000);
+			setCentrePIN(pinValue);
+			var actual = await verifyPIN(pinValue);
+			if (actual.is_valid === true) setAuthorized(true);
+		}
+	});
+
+	const getConfig = async () => {
+		const params = { action: 'verify-pin', data: { pin: 'pinValue' } };
+		const res = await fetch(`${base_url}?d=${JSON.stringify(params)}`);
+		const data = await res.json();
+		return data;
+	};
+
+	const updateConfig = async () => {
+		const params = { action: 'verify-pin', data: { pin: 'pinValue' } };
+		const res = await fetch(`${base_url}?d=${JSON.stringify(params)}`);
+		const data = await res.json();
+		return data;
+	};
+
+
+
+
 	return (
 		<div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
 			<div className="relative py-3 sm:max-w-xl sm:mx-auto">
@@ -22,144 +93,119 @@ export default function Home() {
 							</div>
 
 							<div className="py-1 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 ">
-							 
-									<div className="flex-auto p-2 align-middle text-center h-64 min-h-full ">
-										<label className="text-sm">
-											{' '}
-											Enter Provided Centre PIN to Continue{' '}
-										</label>
-										<input
-											placeholder="Enter 4 Digit PIN"
-											maxLength={4}
-										 
-											className="border-2 text-xl rounded-md p-4 text-center"
-										/>
+
+								<div className="flex-auto p-2 align-middle text-center h-64 min-h-full ">
+									<label className="text-sm">
+										{' '}
+										Enter Provided Centre PIN to Continue{' '}
+									</label>
+									<input
+										placeholder="Enter 4 Digit PIN"
+										maxLength={4}
+
+										className="border-2 text-xl rounded-md p-4 text-center"
+									/>
+								</div>
+
+
+
+								<form className="flex-auto p-2">
+									<p className="text-sm">
+										You can configure your Centrewise Blessing Link. Can be
+										activated on a specific date.
+									</p>
+									<div className="flex items-baseline mt-4">
+										<div className="space-x-2 flex">
+											<label> Centre Name </label>
+										</div>
 									</div>
-								
+									<div className="flex items-baseline mb-6">
+										<div className="space-x-2 flex">
+											<input type="text" size={25} className="border-2 rounded-md" />
+										</div>
+									</div>
+									<div className="flex items-baseline">
+										<div className="space-x-2 flex">
+											<label> Email ID </label>
+										</div>
+									</div>
+									<div className="flex items-baseline mb-6">
+										<div className="space-x-2 flex">
+											<input type="text" size={25} className="border-2 rounded-md" />
+										</div>
+									</div>
 
-							  
-									<form className="flex-auto p-2">
-										<p className="text-sm">
-											You can configure your Centrewise Blessing Link. Can be
-											activated on a specific date.
-										</p>
-										<div className="flex items-baseline mt-4">
-											<div className="space-x-2 flex">
-												<label> Centre Name </label>
-											</div>
+									<div className="flex items-baseline">
+										<div className="space-x-2 flex">
+											<label> Link Active from date </label>
 										</div>
-										<div className="flex items-baseline mb-6">
-											<div className="space-x-2 flex">
-												<input type="text" size={25}  className="border-2 rounded-md" />
-											</div>
-										</div>
-										<div className="flex items-baseline">
-											<div className="space-x-2 flex">
-												<label> Email ID </label>
-											</div>
-										</div>
-										<div className="flex items-baseline mb-6">
-											<div className="space-x-2 flex">
-												<input type="text" size={25} className="border-2 rounded-md" />
-											</div>
-										</div>
+									</div>
 
-										<div className="flex items-baseline">
-											<div className="space-x-2 flex">
-												<label> Start Date </label>
-											</div>
-										</div>
+ 
 
-										<div className="flex items-baseline mb-6">
-											<div className="space-x-2 flex">
-												<input type="date" className="border-2 rounded-md" />
-                        <input type="time" className="border-2 rounded-md" />
-											</div>
+									<div className="flex items-baseline mb-6">
+										<div className="space-x-2 flex">
+											<input type="date" className="border-2 rounded-md" />
+											<input type="time" className="border-2 rounded-md" />
 										</div>
+									</div>
+									
+
+									
+									<div className="flex mt-4">
+
+										
+
+									<div className="flex flex-col mb-6">
 										<label> Language </label>
-										<div className="flex mt-4 mb-6">
-											<div className="space-x-2 flex">
-												<label>
-													<input
-														className="w-4 h-4 flex items-center justify-center bg-gray-100 rounded-lg"
-														name="lang_eng"
-														type="checkbox"
-														value="eng"
-														
-													/>
-													English
-												</label>
-												<label>
-													<input
-														className="w-4 h-4 flex items-center justify-center bg-gray-100 rounded-lg"
-														name="lang_tam"
-														type="checkbox"
-														value="tam"
-														
-													/>
-													Tamil
-												</label>
-												<label>
-													<input
-														className="w-4 h-4 flex items-center justify-center bg-gray-100 rounded-lg"
-														name="lang_hin"
-														type="checkbox"
-														value="hin"
-														
-													/>
-													Hindi
-												</label>
-												<label>
-													<input
-														className="w-4 h-4 flex items-center justify-center bg-gray-100 rounded-lg"
-														name="lang_mal"
-														type="checkbox"
-														value="mal"
-														
-													/>
-													Malayalam
-												</label>
-												<label>
-													<input
-														className="w-4 h-4 flex items-center justify-center bg-gray-100 rounded-lg"
-														name="lang_tel"
-														type="checkbox"
-														value="tel"
-														
-													/>
-													Telugu
-												</label>
-												
-											</div>
+
+										<label className="inline-flex items-center mt-3"  >
+											<input type="checkbox" className="form-checkbox h-5 w-5 text-gray-600"   /><span class="ml-2 text-gray-700"> aaaaaad</span>
+											</label>
+
+
+											<label className="inline-flex items-center mt-3"  >
+											<input type="checkbox" className="form-checkbox h-5 w-5 text-gray-600"    /><span class="ml-2 text-gray-700">aa</span>
+											</label>
+
+
+										{  langs.map((item,ctr)=>{
+
+											return (<label className="inline-flex items-center mt-3" key={item.code}>
+											<input type="checkbox" className="form-checkbox h-5 w-5 text-gray-600"  value={item.code} /><span class="ml-2 text-gray-700">{item.name}</span>
+											</label>)
+
+										})}
 										</div>
+									 
+									</div>
 
-						
 
-										<div className="flex space-x-3 mb-4 text-sm font-medium">
-											<div className="flex-auto flex space-x-3">
-												<button
-													className="w-3/5 flex items-center justify-center rounded-md bg-sky-500 text-white"
-													type="submit"
-												>
-													Save
-												</button>
-											</div>
-											<div className="flex-auto flex space-x-3">
-												<button
-													className="w-3/5 pl-2 pr-2 flex items-center justify-center rounded-md bg-sky-500 text-white"
-													type="submit"
-												>
-													Send Mail
-												</button>
-											</div>
+									<div className="flex space-x-3 mb-4 text-sm font-medium">
+										<div className="flex-auto flex space-x-3">
 											<button
-												className="flex-none flex items-center justify-center w-9 h-9 rounded-md"
-												type="button"
-												aria-label="like"
-											></button>
+												className="w-3/5 flex items-center justify-center rounded-md bg-sky-500 text-white"
+												type="submit"
+											>
+												Save
+											</button>
 										</div>
-									</form>
-								 
+										<div className="flex-auto flex space-x-3">
+											<button
+												className="w-3/5 pl-2 pr-2 flex items-center justify-center rounded-md bg-sky-500 text-white"
+												type="submit"
+											>
+												Share Link
+											</button>
+										</div>
+										<button
+											className="flex-none flex items-center justify-center w-9 h-9 rounded-md"
+											type="button"
+											aria-label="like"
+										></button>
+									</div>
+								</form>
+
 							</div>
 							<div className="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7">
 								<p>For Support</p>
