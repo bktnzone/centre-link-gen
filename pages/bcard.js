@@ -30,7 +30,7 @@ export default function Home({ action = '/bcard' }) {
 	const [lang, setLang] = useState('eng-mal');
 
 	
-	const { data, error } = useSWR(url, fetcher);
+	
 
 
 	const [langs, setLangs] = useState([{ name: 'Hindi', code: 'hin' }, { name: 'Malayalam', code: 'mal' }, { name: 'Tamil', code: 'tam' }, { name: 'English', code: 'eng' }]);

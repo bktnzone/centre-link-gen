@@ -17,7 +17,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 	display: table-cell;
 	margin: 0;
 	padding: 0;
-	width: 25%;
+	width: auto;
 	list-style-type: none;
 }
 

@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { stringify } from 'querystring';
 import Footer from '../components/footer';
-
 import useSWR from 'swr';
 
 
@@ -15,44 +14,56 @@ const preventDefault = (f) => (e) => {
 const base_curl = 'https://script.google.com/macros/s/AKfycbwaJwpjxblNfvEhkVCXgZCjJvnN0oh1LJAo-QJDGIytmm90LyIn/exec';
 const base_surl = 'https://script.google.com/macros/s/AKfycbzIIh0H0aEpkeIgxMPT1YUzBp9f5aUBd6BadQVOPw/exec';
 
+
+
+
+
 const sleep = (milliseconds) => {
 	return new Promise((resolve) => setTimeout(resolve, milliseconds));
 };
+
+const fetcher = (url) =>{
+	fetch(url).then(async (res) => {
+		return res.json();
+	});
+}
 
 export default function Home({ action = '/bcard' }) {
 
 
 	const router = useRouter();
-	const _qryParam = router.query;
-	
-	const [centreCode] = useState(_qryParam.c);
+		
+	const [centreCode,setCentreCode] = useState('');
 	const [query, setQuery] = useState('');
 	const [centreInfo,setCentreInfo] = useState({});
 	const [lang, setLang] = useState('eng-mal');
 
-	const [langs, setLangs] = useState([{ name: 'Hindi', code: 'hin' },{ name: 'Malayalam', code: 'mal' },{ name: 'Tamil', code: 'tam' },{ name: 'French', code: 'fre' },{ name: 'English', code: 'eng'}]);
+	const [langs, setLangs] = useState([{ name: 'Hindi', code: 'hin' },{ name: 'French', code: 'fre' },{ name: 'English', code: 'eng'}]);
 	const handleParam = (setValue) => (e) => {
 		setValue(e.target.value);
 	};
 
 
 	const getCentreInfo = async (centreCode) => {
-		
 		const params = { action: 'centre-info', data: { ccode: centreCode } };
 		const res = await fetch(`${base_curl}?d=${JSON.stringify(params)}`);
 		const data = await res.json();
-		alert(JSON.stringify(data));
 		return data;
 	};
 
+	
+	useEffect(() => {
+		const _qryParam = router.query;
+		setCentreCode(_qryParam.c);
+	});
+
 	useEffect(() => {
     const fetchData = async () => {
-			
-	const _qryParam = router.query;
-      try {
-				console.log(_qryParam);
+	      try {
+					if(centreCode){			
         const result = await getCentreInfo(centreCode);
-        setCentreInfo(result.data);
+        setCentreInfo(result);
+					}
       } catch (error) {
 				console.log(error);
       }
@@ -115,7 +126,7 @@ export default function Home({ action = '/bcard' }) {
 								className="w-3/5 pl-2 mt-2" 
 							/>
 							<h1 className="animate-bounce -mt-6 text-right flex-auto text-sm text-indigo-900 font-semibold font-Inter text-left ">
-								Annanagar, Chennai
+								{ (centreInfo && centreInfo.centre_disp_name) || "Loading..."}
 							</h1>
 
 						</div>
@@ -138,7 +149,7 @@ export default function Home({ action = '/bcard' }) {
 				<div className=" w-full mt-6 flex rounded-md shadow-sm">
 					<div className="relative flex-grow focus-within:z-10">
 						<form onSubmit={handleSubmit}>
-							<div className="mt-1 text-center text-indigo-900 ">
+							<div className="w-full mt-1 text-center text-indigo-900">
 
 							<ul className="segmented-control">
 
@@ -194,7 +205,7 @@ export default function Home({ action = '/bcard' }) {
 									type="button"
 									style={{ transition: 'all .15s ease' }}
 								>
-									<i className="fas fa-heart"></i> Get  →
+									<i className="fas fa-heart text-sm"></i> Get  →
 								</button>
 							</div>
 						</form>
