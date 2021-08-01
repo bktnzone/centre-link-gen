@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   mode: 'jit',
@@ -6,14 +7,19 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        Inter: ['Barlow Condensed'],
+      },
       colors: {
+        'skyc': '#4e18b3',
+        
         sky: colors.sky,
-        cyan: colors.cyan,
+        cyan:  colors.cyan
       },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/aspect-ratio')],
 }
