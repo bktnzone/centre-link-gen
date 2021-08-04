@@ -12,33 +12,25 @@ const preventDefault = (f) => (e) => {
 };
 
 const base_curl = 'https://script.google.com/macros/s/AKfycbwaJwpjxblNfvEhkVCXgZCjJvnN0oh1LJAo-QJDGIytmm90LyIn/exec';
-const base_surl = 'https://script.google.com/macros/s/AKfycbzIIh0H0aEpkeIgxMPT1YUzBp9f5aUBd6BadQVOPw/exec';
-
-
-
-
-
 const sleep = (milliseconds) => {
 	return new Promise((resolve) => setTimeout(resolve, milliseconds));
 };
 
-const fetcher = (url) =>{
-	fetch(url).then(async (res) => {
-		return res.json();
-	});
-}
+
 
 export default function Home({ action = '/bcard' }) {
 
-
 	const router = useRouter();
-		
+
 	const [centreCode,setCentreCode] = useState('');
 	const [query, setQuery] = useState('');
+	const [currentDate] = useState(new Date());
+	const [activeDate,setActiveDate] = useState('');
+	const [isLoaded, setIsLoaded] = useState(false);
 	const [centreInfo,setCentreInfo] = useState({});
-	const [lang, setLang] = useState('eng-mal');
+	const [lang, setLang] = useState('eng');
 
-	const [langs, setLangs] = useState([{ name: 'Hindi', code: 'hin' },{ name: 'French', code: 'fre' },{ name: 'English', code: 'eng'}]);
+	const [langs, setLangs] = useState([{ name: 'Hindi', code: 'hin' },{ name: 'English', code: 'eng' }]);
 	const handleParam = (setValue) => (e) => {
 		setValue(e.target.value);
 	};
@@ -54,7 +46,7 @@ export default function Home({ action = '/bcard' }) {
 	
 	useEffect(() => {
 		const _qryParam = router.query;
-		setCentreCode(_qryParam.c);
+		setCentreCode(_qryParam.c || 'tnzone');
 	});
 
 	useEffect(() => {
@@ -62,7 +54,11 @@ export default function Home({ action = '/bcard' }) {
 	      try {
 					if(centreCode){			
         const result = await getCentreInfo(centreCode);
+				if(result.languages) setLangs(result.languages);
+				if(result.active_date) setActiveDate(new Date(result.active_date));
         setCentreInfo(result);
+
+				setIsLoaded(true);
 					}
       } catch (error) {
 				console.log(error);
@@ -78,34 +74,11 @@ export default function Home({ action = '/bcard' }) {
 			query: {
 				q: query,
 				l: lang,
+				c: centreInfo.centre_disp_name
 			},
 		});
 	});
 
-
-	const handlePINEntry = preventDefault(async (e) => {
-		const pinValue = e.target.value;
-		if (pinValue.length == 4) {
-			//await sleep(3000);
-			setCentrePIN(pinValue);
-			var actual = await verifyPIN(pinValue);
-			if (actual.is_valid === true) setAuthorized(true);
-		}
-	});
-
-	const getConfig = async () => {
-		const params = { action: 'verify-pin', data: { pin: 'pinValue' } };
-		const res = await fetch(`${base_surl}?d=${JSON.stringify(params)}`);
-		const data = await res.json();
-		return data;
-	};
-
-	const updateConfig = async () => {
-		const params = { action: 'verify-pin', data: { pin: 'pinValue' } };
-		const res = await fetch(`${base_surl}?d=${JSON.stringify(params)}`);
-		const data = await res.json();
-		return data;
-	};
 
 
 
@@ -122,10 +95,10 @@ export default function Home({ action = '/bcard' }) {
 					<div className="max-w-md mx-auto align-middle items-center ">
 						<div className="max-w-md mx-auto align-middle items-center ">
 							<img
-								src="https://mamma-rday.vercel.app/assets/bk-logo-1.png"
-								className="w-3/5 pl-2 mt-2" 
+								src="/img/bk-logo-2.png"
+								className="w-3/5 pl-2 md:mt-1" 
 							/>
-							<h1 className="animate-bounce -mt-6 text-right flex-auto text-sm text-indigo-900 font-semibold font-Inter text-left ">
+							<h1 className="animate-pulse -mt-4 text-right flex-auto text-sm text-indigo-900 font-thin font-Inter text-left ">
 								{ (centreInfo && centreInfo.centre_disp_name) || "Loading..."}
 							</h1>
 
@@ -146,7 +119,21 @@ export default function Home({ action = '/bcard' }) {
 										<h1 className="text-center text-indigo-900 font-Inter  text-2xl" >Special Blessings</h1>
 									</div>
 
-				<div className=" w-full mt-6 flex rounded-md shadow-sm">
+									{ activeDate>=currentDate && 
+							 <div className="inline-block align-middle  flex-auto p-10 text-center items-center my-auto">
+							 The event has not started yet.
+							 
+							 Please check out later
+						 </div>
+}
+
+									{ !isLoaded && 
+										<div className=" w-full text-center text-sm text-indigo-900 ">
+											Loading languages...
+											</div>
+}
+{ isLoaded && activeDate<=currentDate &&
+							<div className=" w-full mt-6 flex rounded-md shadow-sm">
 					<div className="relative flex-grow focus-within:z-10">
 						<form onSubmit={handleSubmit}>
 							<div className="w-full mt-1 text-center text-indigo-900">
@@ -164,11 +151,12 @@ export default function Home({ action = '/bcard' }) {
 								className="segmented-control__input"
 								type="radio"
 								onChange={() => {
+								
 								setLang(lg.code);
 								}}
 								name="langType"
-								value="tam"
-								defaultChecked
+								value={lg.code}
+								defaultChecked={lg.code=="eng"}
 								id={lg.code}
 								/>
 								<label
@@ -211,7 +199,7 @@ export default function Home({ action = '/bcard' }) {
 						</form>
 					</div>
 				</div>
-
+			}
 
 
 
@@ -220,15 +208,9 @@ export default function Home({ action = '/bcard' }) {
 
 							</div>
 
-							<div className="hidden inline-block align-middle  flex-auto p-2 text-center items-center my-auto self-center h-96 min-h-full bg rounded-md ">
+						
 
-								<div className="inline-block align-middle  flex-auto p-10 text-center items-center my-auto">
-									The event has not started yet.
-                  <img src="/img/bandhan.png"   className="animate-pulse "/>
-									Please check out on 23rd August 2021
-								</div>
 
-							</div>
 
 							<Footer/>
 						

@@ -4,10 +4,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-   
-		"export": "npm run build && next export -o _static",
-		"lint": "eslint --ext .ts,.tsx",
-		"lint:fix": "eslint --ext .ts,.tsx --fix"
+    "export": "npm run build && next export -o _static",
+    "lint": "eslint --ext .ts,.tsx",
+    "lint:fix": "eslint --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.3",
@@ -15,6 +14,7 @@
     "next": "latest",
     "querystring": "^0.2.1",
     "react": "^17.0.2",
+    "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^17.0.2",
     "react-typed": "^1.2.0",
     "swr": "^0.5.6"
