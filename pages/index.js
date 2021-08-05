@@ -1,9 +1,26 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { stringify } from 'querystring';
 import Footer from '../components/footer';
-import useSWR from 'swr';
+
+
+import Select from 'react-select';
+
+
+const locations = [
+  {
+    label: 'Gujarati',
+    value: 'newYork',
+  },
+  {
+    label: 'Bengali',
+    value: 'oslo',
+  },
+  {
+    label: 'Oriya',
+    value: 'istanbul',
+  }
+];
 
 
 const preventDefault = (f) => (e) => {
@@ -25,6 +42,7 @@ export default function Home({ action = '/bcard' }) {
 	const [centreCode,setCentreCode] = useState('');
 	const [query, setQuery] = useState('');
 	const [currentDate] = useState(new Date());
+
 	const [activeDate,setActiveDate] = useState('');
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [centreInfo,setCentreInfo] = useState({});
@@ -43,23 +61,28 @@ export default function Home({ action = '/bcard' }) {
 		return data;
 	};
 
-	
+
+
 	useEffect(() => {
-		const _qryParam = router.query;
-		setCentreCode(_qryParam.c || 'tnzone');
-	});
+		if (router.isReady) {
+			const _qryParam = router.query;
+			setCentreCode(_qryParam.c  || 'tnzone');
+		}
+		}, [router.query]);
+
 
 	useEffect(() => {
     const fetchData = async () => {
 	      try {
-					if(centreCode){			
-        const result = await getCentreInfo(centreCode);
+					if(centreCode){
+				let ccode=centreCode;
+        const result = await getCentreInfo(ccode);
 				if(result.languages) setLangs(result.languages);
 				if(result.active_date) setActiveDate(new Date(result.active_date));
         setCentreInfo(result);
-
 				setIsLoaded(true);
 					}
+					
       } catch (error) {
 				console.log(error);
       }
@@ -74,7 +97,8 @@ export default function Home({ action = '/bcard' }) {
 			query: {
 				q: query,
 				l: lang,
-				c: centreInfo.centre_disp_name
+				c: centreInfo.centre_disp_name,
+				cc: centreInfo.code
 			},
 		});
 	});
@@ -89,10 +113,12 @@ export default function Home({ action = '/bcard' }) {
 			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"></meta>
 			<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400&display=swap" rel="stylesheet" />
 			</Head>
+			
 			<div className="relative py-3 sm:max-w-xl sm:mx-auto">
 				<div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-purple-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
 				<div className="relative px-4 py-6 bg-white shadow-lg sm:rounded-3xl sm:p-2">
 					<div className="max-w-md mx-auto align-middle items-center ">
+
 						<div className="max-w-md mx-auto align-middle items-center ">
 							<img
 								src="/img/bk-logo-2.png"
@@ -104,7 +130,7 @@ export default function Home({ action = '/bcard' }) {
 
 						</div>
 
-						<div className="divide-y divide-gray-200 -mt-1">
+						<div className="divide-y divide-gray-200 -mt-1" >
 
 
 							<div className="py-1 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 mt-4">
@@ -139,7 +165,7 @@ export default function Home({ action = '/bcard' }) {
 							<div className="w-full mt-1 text-center text-indigo-900">
 
 							<ul className="segmented-control">
-
+						
 								
 
 							{
@@ -170,11 +196,9 @@ export default function Home({ action = '/bcard' }) {
 
 							})
 						}
-               
+              
+					 
 								</ul>
-
-								
- 
 							</div>
 
 							<div className=" w-full mt-1 flex rounded-md shadow-sm">
@@ -212,12 +236,13 @@ export default function Home({ action = '/bcard' }) {
 
 
 
-							<Footer/>
+							<Footer  />
 						
 						</div>
 					</div>
 				</div>
 			</div>
+			
 		</div>
 	);
 }

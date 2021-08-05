@@ -1,0 +1,13 @@
+{
+  "files.exclude": {
+    "_static": true,
+    ".next": true,
+    ".vercel": true,
+    ".vscode": true,
+    "services": true,
+    "yarn.lock": true,
+    "README.md": true,
+    "postcss.config.js": true,
+    "package.json": true
+  }
+}

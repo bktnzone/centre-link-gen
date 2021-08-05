@@ -5,6 +5,8 @@ import Typed from 'react-typed';
 import Footer from '../components/footer';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
+import SloganCard from '../components/slogan-card';
+
 
 const preventDefault = (f) => (e) => {
 	e.preventDefault();
@@ -17,29 +19,51 @@ const sleep = (milliseconds) => {
 };
 
 
-export default function BCard({ }) {
+export default function BCard({ }) { 
 
 	const router = useRouter();
 	const [reqInfo, setReqInfo] = useState({});
+	const [copied,setCopied]=useState(false);
+	const [animateSlogan,setAnimateSlogan]=useState(false);
 	const [centreName, setCentreName] = useState('');
-
+	const [videoReady, setVideoReady] = useState(false);
+	const [textCompleted, setTextCompleted] = useState(false);
+	const [exportMode,setExportMode]=useState('');
+	const [downloaded,setDownloaded]=useState('');
+	
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [cardInfo, setCardInfo] = useState({});
+
+
 	useEffect(() => {
-		const _qryParam = router.query;
+		if (router.isReady) {
+			const _qryParam = router.query;
+			setReqInfo(_qryParam);
+		}
+		}, [router.query]);
 
-		setReqInfo(_qryParam);
-	}, []);
 
+	const handleOnCopy=()=>{
+		setCopied(true);
+	}
 
+	const handleVideoLoaded=async ()=>{
+		//await sleep(15000);
+		setVideoReady(true);
 
+	};
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
+			
 				if (reqInfo.q) {
 					setCentreName(reqInfo.c);
 					const result = await getCardInfo({ name: reqInfo.q, lang: reqInfo.l });
+					if(result){
+						result.centre_disp_name=reqInfo.c;
+						result.timestamp=new Date();
+					}
 					setCardInfo(result);
 					setIsLoaded(true);
 				}
@@ -51,9 +75,15 @@ export default function BCard({ }) {
 	}, [reqInfo]);
 
 
+	const handleTextCompleted=()=>{
 
+		setAnimateSlogan(true);
+		setTimeout(()=>{setAnimateSlogan(false);},6000);
+		setTextCompleted(true);
+
+	}
 	const getCardInfo = async (query) => {
-		const base_curl = `https://script.google.com/macros/s/AKfycbzIIh0H0aEpkeIgxMPT1YUzBp9f5aUBd6BadQVOPw/exec?fullname=${query.name}&lang=${query.lang}`;
+		const base_curl = `https://script.google.com/macros/s/AKfycbzIIh0H0aEpkeIgxMPT1YUzBp9f5aUBd6BadQVOPw/exec?fullname=${query.name}&lang=${query.lang}&cc=${query.cc}`;
 		const res = await fetch(`${base_curl}`);
 		const data = await res.json();
 		return data;
@@ -68,6 +98,7 @@ export default function BCard({ }) {
 				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"></meta>
 				<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400&display=swap" rel="stylesheet" />
 			</Head>
+			
 			<div className="relative py-3 sm:max-w-xl sm:mx-auto">
 
 				<div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-purple-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
@@ -101,18 +132,18 @@ export default function BCard({ }) {
 
 												{isLoaded &&
 													<div className="aspect-w-16 aspect-h-9">
-														<iframe src="https://player.vimeo.com/video/582888192?color=0c88dd&title=0&byline=0&portrait=0&badge=0" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+														<iframe onLoad={handleVideoLoaded}  src="https://player.vimeo.com/video/582888192?color=0c88dd&title=0&byline=0&portrait=0&badge=0&autoplay=1" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
 													</div>
 												}
 
-												{!isLoaded &&
+												{!isLoaded && 
 													<div className="w-full pt-1 pb-3 pt-3 ">
-														<img src="/img/bandhan.png" className="animate-pulse " />
+														<img src="/img/bandhan.png" className="animate-pulse" />
 													</div>
 												}
 
-												{isLoaded && (
-													<p className="text-md text-purple-500 font-semibold text-center mt-4 ">
+												{videoReady && (
+													<p className="text-md text-purple-800 font-semibold text-center mt-4 font-Inter ">
 														{cardInfo.disp_name}
 													</p>)
 												}
@@ -120,62 +151,62 @@ export default function BCard({ }) {
 											</div>
 											<div className="w-full mb-1">
 
-												<div className="text-3xl text-indigo-500 text-left leading-tight h-3">“</div>
-												<p className="text-lg font-semibold text-gray-600 text-center px-5">
-													{!isLoaded &&
+												{ videoReady && <div className="text-3xl text-indigo-500 text-left leading-tight h-3">“</div> }
+												<p className={`${animateSlogan?'animate-pulse':''} text-lg font-semibold text-gray-600 text-center px-5`}>
+													{!videoReady &&
 														<span className="text-sm font-normal">Please stay in silence for a moment...</span>
 													}
-													{isLoaded && (<Typed
+													{videoReady && (<Typed
 														strings={[cardInfo.slogan]}
 														showCursor={false}
+														onComplete={()=>{handleTextCompleted()}}
 														typeSpeed={70}
 													/>)
 													}
 
 												</p>
-												<div className="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">”</div>
+												{ videoReady && <div className="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">”</div> }
 											</div>
 
 										</div>
 
 									</div>
-									{isLoaded &&
-
+									{ textCompleted &&  
 										<div className="-mt-3 min-w-screen  flex items-center justify-center px-3">
 											<div className="w-full mx-auto  bg-white shadow-lg px-2 p-1 text-gray-800"  >
 												<div className="flex justify-evenly">
-
-												<span className="cursor-pointer">
-													<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-														<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-													</svg>
-													</span>
-													<span className="cursor-pointer">
-													<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-														<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-													</svg>
-													</span>
-
-													<CopyToClipboard text={cardInfo.slogan}
-													>
-														<span className="cursor-pointer">
-
+												<CopyToClipboard onCopy={handleOnCopy} text={cardInfo.disp_name + " " + cardInfo.slogan} >
+														<span className="cursor-pointer" data-delay-hide='1000' clickable={true} data-tip='copied slogan text to clipboard' data-event='click' data-event-off='dblclick'>
 															<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 																<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
 															</svg>
 														</span>
 													</CopyToClipboard>
+												<span className="cursor-pointer" onClick={()=>{setExportMode('download'); setDownloaded(true);}}>
+													<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+														<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+													</svg></span>
+													<span className="cursor-pointer hidden">
+													<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+														<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+													</svg>
+													</span>
+
+												
 
 												</div>
 												<div className="flex text-xs justify-evenly ">
-													<label>
-														download
-													</label>
-													<label>
+													
+													<label className="hidden">
 														share
 													</label>
+													{ !copied &&  <label >copy text</label> }
+													{ copied &&  <label className="text-blue-600">copied</label> }
+														
+													
 													<label>
-														copy text
+													{ !downloaded &&  <label>download</label> }
+													{ downloaded &&  <label className="text-blue-600">downloaded</label> }
 													</label>
 
 												</div>
@@ -194,6 +225,11 @@ export default function BCard({ }) {
 					</div>
 				</div>
 			</div>
+			{ textCompleted && 
+			<SloganCard cardInfo={cardInfo} exportMode={exportMode} title="Nirmal" onExported={()=>{
+				setExportMode('');
+			}} />
+			}
 		</div>
 	);
 }
