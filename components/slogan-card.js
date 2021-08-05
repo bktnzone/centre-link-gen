@@ -55,7 +55,7 @@ const SloganCard = (props) => {
       return image
     }).then((image) => {
       if(props.exportMode=="download")
-        saveAs(image, `${props.title}.png`);
+        saveAs(image, `${props.title}-${Date.now().toString().slice(0,7)}.png`);
       if(props.exportMode=="share")
         shareImage(image);
       props.onExported();

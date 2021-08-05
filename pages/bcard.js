@@ -48,7 +48,8 @@ export default function BCard({ }) {
 	}
 
 	const handleVideoLoaded=async ()=>{
-		//await sleep(15000);
+		
+		await sleep(15000);
 		setVideoReady(true);
 
 	};
@@ -226,7 +227,7 @@ export default function BCard({ }) {
 				</div>
 			</div>
 			{ textCompleted && 
-			<SloganCard cardInfo={cardInfo} exportMode={exportMode} title="Nirmal" onExported={()=>{
+			<SloganCard cardInfo={cardInfo} exportMode={exportMode} title={reqInfo.q} onExported={()=>{
 				setExportMode('');
 			}} />
 			}
