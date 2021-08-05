@@ -46,7 +46,7 @@ const MetaTags = () => {
       />
       <meta
         property="og:image"
-        content="https://slickr.vercel.app/assets/cover.png"
+        content="https://bk-rakhi.appdews.com/img/preview.png?"
       />
 
       {/* Twitter */}
