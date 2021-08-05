@@ -29,6 +29,7 @@ export default function BCard({ }) {
 	const [videoReady, setVideoReady] = useState(false);
 	const [textCompleted, setTextCompleted] = useState(false);
 	const [exportMode,setExportMode]=useState('');
+	const [frameReady,setFrameReady]=useState(false);
 	const [downloaded,setDownloaded]=useState('');
 	
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -48,10 +49,8 @@ export default function BCard({ }) {
 	}
 
 	const handleVideoLoaded=async ()=>{
-		
-		await sleep(15000);
+		await sleep(8000);
 		setVideoReady(true);
-
 	};
 
 	useEffect(() => {
@@ -60,13 +59,15 @@ export default function BCard({ }) {
 			
 				if (reqInfo.q) {
 					setCentreName(reqInfo.c);
-					const result = await getCardInfo({ name: reqInfo.q, lang: reqInfo.l });
+					const result = await getCardInfo({ cc:reqInfo.cc,name: reqInfo.q, lang: reqInfo.l });
 					if(result){
 						result.centre_disp_name=reqInfo.c;
 						result.timestamp=new Date();
 					}
 					setCardInfo(result);
 					setIsLoaded(true);
+					await sleep(4000);
+					setFrameReady(true);
 				}
 			} catch (error) {
 				console.log(error);
@@ -131,13 +132,13 @@ export default function BCard({ }) {
 
 											<div className="w-full h-auto m2">
 
-												{isLoaded &&
+												{frameReady &&
 													<div className="aspect-w-16 aspect-h-9">
-														<iframe onLoad={handleVideoLoaded}  src="https://player.vimeo.com/video/582888192?color=0c88dd&title=0&byline=0&portrait=0&badge=0&autoplay=1" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
+														<iframe onLoad={handleVideoLoaded}  src="https://player.vimeo.com/video/582888192?color=0c88dd&title=0&byline=0&portrait=0&badge=0&autoplay=1" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen className="rounded"></iframe>
 													</div>
 												}
 
-												{!isLoaded && 
+												{!frameReady && 
 													<div className="w-full pt-1 pb-3 pt-3 ">
 														<img src="/img/bandhan.png" className="animate-pulse" />
 													</div>
@@ -155,7 +156,9 @@ export default function BCard({ }) {
 												{ videoReady && <div className="text-3xl text-indigo-500 text-left leading-tight h-3">“</div> }
 												<p className={`${animateSlogan?'animate-pulse':''} text-lg font-semibold text-gray-600 text-center px-5`}>
 													{!videoReady &&
-														<span className="text-sm font-normal">Please stay in silence for a moment...</span>
+														(<><span className="text-xs font-normal">Please stay in silence for a moment...</span>
+														<span className="text-xs font-normal block">Your card getting ready..</span>
+														</>)
 													}
 													{videoReady && (<Typed
 														strings={[cardInfo.slogan]}
@@ -177,7 +180,7 @@ export default function BCard({ }) {
 											<div className="w-full mx-auto  bg-white shadow-lg px-2 p-1 text-gray-800"  >
 												<div className="flex justify-evenly">
 												<CopyToClipboard onCopy={handleOnCopy} text={cardInfo.disp_name + " " + cardInfo.slogan} >
-														<span className="cursor-pointer" data-delay-hide='1000' clickable={true} data-tip='copied slogan text to clipboard' data-event='click' data-event-off='dblclick'>
+														<span className="cursor-pointer" data-delay-hide='1000'  data-tip='copied slogan text to clipboard' data-event='click' data-event-off='dblclick'>
 															<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 																<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
 															</svg>

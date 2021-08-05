@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Footer from '../components/footer';
+import MetaTags from '../components/page-meta';
 
 
 import Select from 'react-select';
@@ -98,7 +99,7 @@ export default function Home({ action = '/bcard' }) {
 				q: query,
 				l: lang,
 				c: centreInfo.centre_disp_name,
-				cc: centreInfo.code
+				cc: centreInfo.centre_code
 			},
 		});
 	});
@@ -109,11 +110,8 @@ export default function Home({ action = '/bcard' }) {
 
 	return (
 		<div className="min-h-screen bg-gray-100 py-2 flex flex-col justify-center sm:py-4">
-			<Head>
-			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"></meta>
-			<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400&display=swap" rel="stylesheet" />
-			</Head>
-			
+ 
+			<MetaTags />
 			<div className="relative py-3 sm:max-w-xl sm:mx-auto">
 				<div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-purple-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
 				<div className="relative px-4 py-6 bg-white shadow-lg sm:rounded-3xl sm:p-2">
