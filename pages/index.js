@@ -7,22 +7,33 @@ import MetaTags from '../components/page-meta';
 
 import Select from 'react-select';
 
+const customStyles = {
+  control: (base, state) => ({
+    ...base,
+    //background: "#6d28d9",
+		
+    color: '#ffffff'
+		
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    color: '#6d28d9'
+  }),
+  menu: base => ({
+    ...base,
+    // override border radius to match the box
+    borderRadius: 0,
+    // kill the gap
+    marginTop: 0
+  }),
+  menuList: base => ({
+    ...base,
+    // kill the white space on first and last option
+    padding: 0
+  })
+};
 
-const locations = [
-  {
-    label: 'Gujarati',
-    value: 'newYork',
-  },
-  {
-    label: 'Bengali',
-    value: 'oslo',
-  },
-  {
-    label: 'Oriya',
-    value: 'istanbul',
-  }
-];
-
+ 
 
 const preventDefault = (f) => (e) => {
 	e.preventDefault();
@@ -43,7 +54,8 @@ export default function Home({ action = '/bcard' }) {
 	const [centreCode,setCentreCode] = useState('');
 	const [query, setQuery] = useState('');
 	const [currentDate] = useState(new Date());
-
+	
+	const [otherLangs,setOtherLangs] = useState([]);
 	const [activeDate,setActiveDate] = useState('');
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [centreInfo,setCentreInfo] = useState({});
@@ -79,6 +91,8 @@ export default function Home({ action = '/bcard' }) {
 				let ccode=centreCode;
         const result = await getCentreInfo(ccode);
 				if(result.languages) setLangs(result.languages);
+				if(result.otherLangs) setOtherLangs(result.otherLangs);
+				
 				if(result.active_date) setActiveDate(new Date(result.active_date));
         setCentreInfo(result);
 				setIsLoaded(true);
@@ -180,6 +194,7 @@ export default function Home({ action = '/bcard' }) {
 								}}
 								name="langType"
 								value={lg.code}
+							
 								defaultChecked={lg.code=="eng"}
 								id={lg.code}
 								/>
@@ -195,7 +210,25 @@ export default function Home({ action = '/bcard' }) {
 							})
 						}
               
-					 
+					 { otherLangs.length>0 && 
+						<li  className="segmented-control__item ">
+								
+								<label
+								className=" rounded-l  segmented-control__label text-sm font-semibold"
+							
+								>
+							<Select styles={customStyles}     isSearchable={false} 
+							placeholder="Other..." onChange={()=>{
+								Array.from(document.querySelectorAll(".segmented-control__input")).forEach(item=>{
+									item.checked=false;
+								})
+								setLang('guj')
+							}} options={otherLangs} isEditable={false} title={"Other"}/>
+								</label>
+
+
+								</li>
+								}
 								</ul>
 							</div>
 

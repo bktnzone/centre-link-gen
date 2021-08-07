@@ -3,7 +3,7 @@
 [X] Support for Other Languages
 [X] Cleanup
 
-/*	<li  className="segmented-control__item hidden">
+	<li  className="segmented-control__item hidden">
 								<input
 								className="segmented-control__input"
 								type="radio"
@@ -21,4 +21,4 @@
 								</label>
 
 
-								</li>*/
+								</li>
