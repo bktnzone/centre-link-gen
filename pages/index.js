@@ -151,10 +151,10 @@ export default function Home({ action = '/bcard' }) {
 									<div>
 										<h1 className="text-center text-indigo-900 font-Inter animate-pulse text-2xl" >Raksha Bandhan 2021</h1>
 									</div>
-									<div className="mt-1">&nbsp;</div>
+									<div className="-mt-6 pt-0">&nbsp;</div>
 									<img src="/img/bandhan.png"   className="animate-pulse "/>
 									<div>
-										<h1 className="text-center text-indigo-900 font-Inter  text-2xl" >Special Blessings</h1>
+										<h1 className="text-center text-indigo-900 font-Inter text-2xl" >Special Blessings</h1>
 									</div>
 
 									{ activeDate>=currentDate && 
