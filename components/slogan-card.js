@@ -123,10 +123,10 @@ const SloganCard = (props) => {
                     <div className="w-full pt-1 pb-0 -mt-1 ">
                       <img src="/img/bandhan.png" />
                     </div>
-                    <div className=" absolute w-3/4 ml-1 mt-4">
-                    <div className="float-left -ml-4  transform rotate-90"><img width="65" src="/img/border-card-purple.png" /></div>
-                    <div className="float-right mr-3 md:-mr-4  transform rotate-180"><img width="65"  src="/img/border-card-purple.png" /></div>
-                    </div>
+                    <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+														<div className="float-left   transform rotate-90"><img width="65" src="/img/border-card-purple.png" /></div>
+														<div className="float-right  transform rotate-180"><img width="65" src="/img/border-card-purple.png" /></div>
+													</div>
                     <p className="text-md text-purple-900 pt-5 font-semibold text-center mt-1  font-Inter">
                     {props.cardInfo.disp_name}
                     </p>
@@ -134,12 +134,12 @@ const SloganCard = (props) => {
                   <div className="w-full mb-1">
                     <div className="text-3xl text-gray-500 text-left leading-tight h-3 hidden">“</div>
                     <p className="text-lg font-semibold text-gray-600 text-center px-5">
-                      {props.cardInfo.slogan}
+                    “{props.cardInfo.slogan}”
                     </p>
-                    <div className=" absolute w-3/4  -mt-8">
-    <div className="float-left -ml-3 "><img width="65"  src="/img/border-card-purple.png" /></div>
-    <div className="float-right mr-2 md:-mr-5 transform -rotate-90"><img width="65" src="/img/border-card-purple.png" /></div>
-  </div>
+                    <div className="relative py-1 sm:max-w-xl sm:mx-auto">
+                    <div className="float-left   "><img width="65" src="/img/border-card-purple.png" /></div>
+                    <div className="float-right  transform -rotate-90"><img width="65" src="/img/border-card-purple.png" /></div>
+                    </div>
 
                     <div className="text-3xl text-gray-500 text-right leading-tight h-3 -mt-3 hidden">”</div>
                   </div>
