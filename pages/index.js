@@ -218,11 +218,12 @@ export default function Home({ action = '/bcard' }) {
 							
 								>
 							<Select styles={customStyles}     isSearchable={false} 
-							placeholder="Other..." onChange={()=>{
+							placeholder="Other..." onChange={(tgt)=>{
 								Array.from(document.querySelectorAll(".segmented-control__input")).forEach(item=>{
 									item.checked=false;
-								})
-								setLang('guj')
+								});
+									
+								setLang(tgt.value);
 							}} options={otherLangs} isEditable={false} title={"Other"}/>
 								</label>
 

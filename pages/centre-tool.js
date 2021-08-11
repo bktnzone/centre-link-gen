@@ -162,19 +162,19 @@ export default function Home() {
 										<label> Language </label>
 
 										<label className="inline-flex items-center mt-3"  >
-											<input type="checkbox" className="form-checkbox h-5 w-5 text-gray-600"   /><span class="ml-2 text-gray-700"> aaaaaad</span>
+											<input type="checkbox" className="form-checkbox h-5 w-5 text-gray-600"   /><span className="ml-2 text-gray-700"> aaaaaad</span>
 											</label>
 
 
 											<label className="inline-flex items-center mt-3"  >
-											<input type="checkbox" className="form-checkbox h-5 w-5 text-gray-600"    /><span class="ml-2 text-gray-700">aa</span>
+											<input type="checkbox" className="form-checkbox h-5 w-5 text-gray-600"    /><span className="ml-2 text-gray-700">aa</span>
 											</label>
 
 
 										{  langs.map((item,ctr)=>{
 
 											return (<label className="inline-flex items-center mt-3" key={item.code}>
-											<input type="checkbox" className="form-checkbox h-5 w-5 text-gray-600"  value={item.code} /><span class="ml-2 text-gray-700">{item.name}</span>
+											<input type="checkbox" className="form-checkbox h-5 w-5 text-gray-600"  value={item.code} /><span className="ml-2 text-gray-700">{item.name}</span>
 											</label>)
 
 										})}

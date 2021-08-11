@@ -99,6 +99,8 @@ export default function BCard({ }) {
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"></meta>
 				<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400&display=swap" rel="stylesheet" />
+				<meta name="theme-color" content="#6d28d9" />
+
 			</Head>
 			
 			<div className="relative py-3 sm:max-w-xl sm:mx-auto">
@@ -143,23 +145,34 @@ export default function BCard({ }) {
 														<img src="/img/bandhan.png" className="animate-pulse" />
 													</div>
 												}
-
+{ videoReady &&
+<div className=" absolute w-3/4  mt-4">
+    <div className="float-left -ml-3  transform rotate-90"><img width="65" src="/img/border-card-purple.png" /></div>
+    <div className="float-right mr-5 md:-mr-9 transform rotate-180"><img width="65"  src="/img/border-card-purple.png" /></div>
+  </div>
+	}
 												{videoReady && (
-													<p className="text-md text-purple-800 font-semibold text-center mt-4 font-Inter ">
+													<p className="text-md  text-purple-800 font-semibold text-center mt-4 font-Inter pt-10">
 														{cardInfo.disp_name}
 													</p>)
 												}
 
 											</div>
-											<div className="w-full mb-1">
+											<div className="w-full mb-5">
 
-												{ videoReady && <div className="text-3xl text-indigo-500 text-left leading-tight h-3">“</div> }
+
+				
+
+
+  												{ videoReady && <div className="text-3xl text-indigo-500 text-left leading-tight h-3 hidden">“</div> }
 												<p className={`${animateSlogan?'animate-pulse':''} text-lg font-semibold text-gray-600 text-center px-5`}>
 													{!videoReady &&
 														(<><span className="text-xs font-normal">Please stay in silence for a moment...</span>
 														<span className="text-xs font-normal block">Your card getting ready..</span>
 														</>)
 													}
+
+
 													{videoReady && (<Typed
 														strings={[cardInfo.slogan]}
 														showCursor={false}
@@ -168,8 +181,16 @@ export default function BCard({ }) {
 													/>)
 													}
 
+{ textCompleted &&
+<div className=" absolute w-3/4 -ml-7 -mt-4">
+    <div className="float-left -ml-1 "><img width="65"  src="/img/border-card-purple.png" /></div>
+    <div className="float-right mr-3 md:-mr-10  transform -rotate-90"><img width="65" src="/img/border-card-purple.png" /></div>
+  </div>
+}
+
+
 												</p>
-												{ videoReady && <div className="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">”</div> }
+												{ videoReady && <div className="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3 hidden">”</div> }
 											</div>
 
 										</div>
@@ -229,6 +250,8 @@ export default function BCard({ }) {
 					</div>
 				</div>
 			</div>
+		
+
 			{ textCompleted && 
 			<SloganCard cardInfo={cardInfo} exportMode={exportMode} title={reqInfo.q} onExported={()=>{
 				setExportMode('');
