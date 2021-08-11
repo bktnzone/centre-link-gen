@@ -152,7 +152,7 @@ export default function BCard({ }) {
 													</div>
 												}
 												{videoReady && (
-													<p className="text-md  text-purple-800 font-semibold text-center mt-4 pb-2 font-Inter ">
+													<p className="text-md  text-purple-800 font-semibold text-center mt-2 pb-2 font-Inter ">
 														{cardInfo.disp_name}
 													</p>)
 												}
@@ -181,7 +181,7 @@ export default function BCard({ }) {
 												</p>
 
 												{textCompleted &&
-														<div className="relative py-1 sm:max-w-xl sm:mx-auto">
+														<div className="relative py-1 sm:max-w-xl sm:mx-auto -mt-5">
 															<div className="float-left   "><img width="65" src="/img/border-card-purple.png" /></div>
 															<div className="float-right  transform -rotate-90"><img width="65" src="/img/border-card-purple.png" /></div>
 														</div>
