@@ -8,6 +8,11 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import SloganCard from '../components/slogan-card';
 
 
+const videoUrls={
+	"bk":"https://player.vimeo.com/video/582888192?color=0c88dd&title=0&byline=0&portrait=0&badge=0&autoplay=1",
+	"nbk":"https://player.vimeo.com/video/587703238?color=0c88dd&title=0&byline=0&portrait=0&badge=0&autoplay=1"
+}
+
 const preventDefault = (f) => (e) => {
 	e.preventDefault();
 	f(e);
@@ -99,13 +104,13 @@ export default function BCard({ }) {
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"></meta>
 				<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400&display=swap" rel="stylesheet" />
-				<meta name="theme-color" content="#6d28d9" />
+				<meta name="theme-color" content="#b91c1c" />
 
 			</Head>
 
 			<div className="relative py-3 sm:max-w-xl sm:mx-auto">
 
-				<div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-purple-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+				<div className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
 				<div className="relative px-4 py-6 bg-white shadow-lg sm:rounded-3xl sm:p-2">
 					<div className="max-w-md mx-auto align-middle items-center ">
 						<div className="max-w-md mx-auto align-middle items-center ">
@@ -113,7 +118,7 @@ export default function BCard({ }) {
 								src="/img/bk-logo-2.png"
 								className="w-3/5 pl-2 -mt-3"
 							/>
-							<h1 className="animate-pulse -mt-4 text-right flex-auto text-sm text-indigo-900 font-thin font-Inter text-left ">
+							<h1 className="animate-pulse -mt-4 text-right flex-auto text-sm text-red-900 font-thin font-Inter text-left ">
 								{(centreName) || "Loading..."}
 							</h1>
 
@@ -136,7 +141,7 @@ export default function BCard({ }) {
 
 												{frameReady &&
 													<div className="aspect-w-16 aspect-h-9">
-														<iframe onLoad={handleVideoLoaded} src="https://player.vimeo.com/video/582888192?color=0c88dd&title=0&byline=0&portrait=0&badge=0&autoplay=1" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen className="rounded"></iframe>
+														<iframe onLoad={handleVideoLoaded} src={videoUrls.nbk} width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen className="rounded"></iframe>
 													</div>
 												}
 
@@ -147,12 +152,12 @@ export default function BCard({ }) {
 												}
 												{videoReady &&
 													<div className="relative py-3 sm:max-w-xl sm:mx-auto">
-														<div className="float-left   transform rotate-90"><img width="65" src="/img/border-card-purple.png" /></div>
-														<div className="float-right  transform rotate-180"><img width="65" src="/img/border-card-purple.png" /></div>
+														<div className="float-left   transform rotate-90"><img width="65" src="/img/border-card-red.png" /></div>
+														<div className="float-right  transform rotate-180"><img width="65" src="/img/border-card-red.png" /></div>
 													</div>
 												}
 												{videoReady && (
-													<p className="text-md  text-purple-800 font-semibold text-center mt-2 pb-2 font-Inter ">
+													<p className="text-md  text-red-800 font-semibold text-center mt-2 pb-2 font-Inter ">
 														{cardInfo.disp_name}
 													</p>)
 												}
@@ -160,7 +165,7 @@ export default function BCard({ }) {
 											</div>
 											<div className="w-full mb-5">
 
-												{videoReady && <div className="text-3xl text-indigo-500 text-left leading-tight h-3 hidden">“</div>}
+												{videoReady && <div className="text-3xl text-red-500 text-left leading-tight h-3 hidden">“</div>}
 												<p className={`${animateSlogan ? 'animate-pulse' : ''} text-md font-semibold text-gray-600 text-center px-5`}>
 													{!videoReady &&
 														(<><span className="text-xs font-normal">Please stay in silence for a moment...</span>
@@ -182,12 +187,12 @@ export default function BCard({ }) {
 
 												{textCompleted &&
 														<div className="relative py-1 sm:max-w-xl sm:mx-auto -mt-5">
-															<div className="float-left   "><img width="65" src="/img/border-card-purple.png" /></div>
-															<div className="float-right  transform -rotate-90"><img width="65" src="/img/border-card-purple.png" /></div>
+															<div className="float-left   "><img width="65" src="/img/border-card-red.png" /></div>
+															<div className="float-right  transform -rotate-90"><img width="65" src="/img/border-card-red.png" /></div>
 														</div>
 													}
 
-												{videoReady && <div className="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3 hidden">”</div>}
+												{videoReady && <div className="text-3xl text-red-500 text-right leading-tight h-3 -mt-3 hidden">”</div>}
 											</div>
 
 										</div>

@@ -113,8 +113,8 @@ const SloganCard = (props) => {
 
             <div className=" flex-auto p-2 align-middle text-left  min-h-full rounded-md bg" >
               <div>
-                <h1 className="text-center text-indigo-900 font-Inter  text-2xl" >Special Blessings</h1>
-                <h3 className="text-center text-indigo-900 font-Inter  text-xl" >Received on the occasion of Raksha Bandhan 2021</h3>
+                <h1 className="text-center text-red-900 font-Inter  text-2xl" >Special Blessings</h1>
+                <h3 className="text-center text-red-900 font-Inter  text-xl" >Received on the occasion of Raksha Bandhan 2021</h3>
                 <h4 className="text-center text-red-900 font-Inter  text-xl">{props.cardInfo.centre_disp_name}</h4>
               </div>
               <div className="min-w-screen  flex items-center justify-center px-2 py-5" >
@@ -124,10 +124,10 @@ const SloganCard = (props) => {
                       <img src="/img/bandhan.png" />
                     </div>
                     <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-														<div className="float-left   transform rotate-90"><img width="65" src="/img/border-card-purple.png" /></div>
-														<div className="float-right  transform rotate-180"><img width="65" src="/img/border-card-purple.png" /></div>
+														<div className="float-left   transform rotate-90"><img width="65" src="/img/border-card-red.png" /></div>
+														<div className="float-right  transform rotate-180"><img width="65" src="/img/border-card-red.png" /></div>
 													</div>
-                    <p className="text-md text-purple-900 pt-5 font-semibold text-center mt-1  font-Inter">
+                    <p className="text-md text-red-900 pt-5 font-semibold text-center mt-1  font-Inter">
                     {props.cardInfo.disp_name}
                     </p>
                   </div>
@@ -137,8 +137,8 @@ const SloganCard = (props) => {
                     “{props.cardInfo.slogan}”
                     </p>
                     <div className="relative py-1 sm:max-w-xl sm:mx-auto">
-                    <div className="float-left   "><img width="65" src="/img/border-card-purple.png" /></div>
-                    <div className="float-right  transform -rotate-90"><img width="65" src="/img/border-card-purple.png" /></div>
+                    <div className="float-left   "><img width="65" src="/img/border-card-red.png" /></div>
+                    <div className="float-right  transform -rotate-90"><img width="65" src="/img/border-card-red.png" /></div>
                     </div>
 
                     <div className="text-3xl text-gray-500 text-right leading-tight h-3 -mt-3 hidden">”</div>

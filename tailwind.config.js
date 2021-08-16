@@ -14,8 +14,8 @@ module.exports = {
       colors: {
         'skyc': '#4e18b3',
         
-        sky: colors.sky,
-        cyan:  colors.cyan
+        sky: colors.red,
+        cyan:  colors.rose
       },
     },
   },

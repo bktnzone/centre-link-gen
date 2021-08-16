@@ -10,14 +10,14 @@ import Select from 'react-select';
 const customStyles = {
   control: (base, state) => ({
     ...base,
-    //background: "#6d28d9",
+    //background: "#b91c1c",
 		
     color: '#ffffff'
 		
   }),
   singleValue: (provided) => ({
     ...provided,
-    color: '#6d28d9'
+    color: '#b91c1c'
   }),
   menu: base => ({
     ...base,
@@ -127,7 +127,7 @@ export default function Home({ action = '/bcard' }) {
  
 			<MetaTags />
 			<div className="relative py-3 sm:max-w-xl sm:mx-auto">
-				<div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-purple-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+				<div className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
 				<div className="relative px-4 py-6 bg-white shadow-lg sm:rounded-3xl sm:p-2">
 					<div className="max-w-md mx-auto align-middle items-center ">
 
@@ -136,7 +136,7 @@ export default function Home({ action = '/bcard' }) {
 								src="/img/bk-logo-2.png"
 								className="w-3/5 pl-2 md:mt-1" 
 							/>
-							<h1 className="animate-pulse -mt-4 text-right flex-auto text-sm text-indigo-900 font-thin font-Inter text-left ">
+							<h1 className="animate-pulse -mt-4 text-right flex-auto text-sm text-red-900 font-thin font-Inter text-left ">
 								{ (centreInfo && centreInfo.centre_disp_name) || "Loading..."}
 							</h1>
 
@@ -149,12 +149,12 @@ export default function Home({ action = '/bcard' }) {
 
 								<div className=" flex-auto p-2 align-middle text-left h-96 min-h-full bg rounded-md ">
 									<div>
-										<h1 className="text-center text-indigo-900 font-Inter animate-pulse text-2xl" >Raksha Bandhan 2021</h1>
+										<h1 className="text-center text-red-900 font-Inter animate-pulse text-2xl" >Raksha Bandhan 2021</h1>
 									</div>
 									<div className="-mt-6 pt-0">&nbsp;</div>
 									<img src="/img/bandhan.png"   className="animate-pulse "/>
 									<div>
-										<h1 className="text-center text-indigo-900 font-Inter text-2xl" >Special Blessings</h1>
+										<h1 className="text-center text-red-900 font-Inter text-2xl" >Special Blessings</h1>
 									</div>
 
 								{ activeDate>=currentDate && centreInfo.status!='closed' &&
@@ -174,7 +174,7 @@ export default function Home({ action = '/bcard' }) {
 								}
 
 							{ !isLoaded && 
-							<div className=" w-full text-center text-sm text-indigo-900 ">
+							<div className=" w-full text-center text-sm text-red-900 ">
 							Loading languages...
 							</div>
 							}
@@ -182,7 +182,7 @@ export default function Home({ action = '/bcard' }) {
 							<div className=" w-full mt-6 flex rounded-md shadow-sm">
 					<div className="relative flex-grow focus-within:z-10">
 						<form onSubmit={handleSubmit}>
-							<div className="w-full mt-1 text-center text-indigo-900">
+							<div className="w-full mt-1 text-center text-red-900">
 
 							<ul className="segmented-control">
 						
@@ -253,7 +253,7 @@ export default function Home({ action = '/bcard' }) {
 								</div>
 								<button
 									onClick={handleSubmit}
-									className=" bg-purple-800 text-white hover:bg-purple-600 font-bold  pl-2 rounded-r-md shadow hover:shadow-md outline-none focus:outline-none mr-1 pr-2 text-sm"
+									className=" bg-red-800 text-white hover:bg-red-600 font-bold  pl-2 rounded-r-md shadow hover:shadow-md outline-none focus:outline-none mr-1 pr-2 text-sm"
 									type="button"
 									style={{ transition: 'all .15s ease' }}
 								>

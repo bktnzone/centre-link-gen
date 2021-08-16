@@ -11,7 +11,7 @@ const MetaTags = () => {
         name="apple-mobile-web-app-status-bar-style"
         content="black-translucent"
       />
-      <meta name="theme-color" content="#6d28d9" />
+      <meta name="theme-color" content="#b91c1c" />
 
       <title>
         Brahma Kumaris - Online Raksha Bandhan 2021 - Blessing Card
