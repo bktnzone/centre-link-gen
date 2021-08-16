@@ -157,19 +157,27 @@ export default function Home({ action = '/bcard' }) {
 										<h1 className="text-center text-indigo-900 font-Inter text-2xl" >Special Blessings</h1>
 									</div>
 
-									{ activeDate>=currentDate && 
-							 <div className="inline-block align-middle  flex-auto p-10 text-center items-center my-auto">
-							 The event has not started yet.
-							 
-							 Please check out later
-						 </div>
-}
+								{ activeDate>=currentDate && centreInfo.status!='closed' &&
+								<div className="inline-block align-middle  flex-auto p-10 text-center items-center my-auto">
+								The event has not started yet.
 
-									{ !isLoaded && 
-										<div className=" w-full text-center text-sm text-indigo-900 ">
-											Loading languages...
-											</div>
-}
+								Please re-visit us on {centreInfo.active_date_disp}
+								</div>
+								}
+
+
+							{ activeDate>=currentDate && centreInfo.status=='closed' &&
+								<div className="inline-block align-middle  flex-auto p-10 text-center items-center my-auto">
+								The event has been closed. Please checkout next year.
+								
+								</div>
+								}
+
+							{ !isLoaded && 
+							<div className=" w-full text-center text-sm text-indigo-900 ">
+							Loading languages...
+							</div>
+							}
 { isLoaded && activeDate<=currentDate &&
 							<div className=" w-full mt-6 flex rounded-md shadow-sm">
 					<div className="relative flex-grow focus-within:z-10">

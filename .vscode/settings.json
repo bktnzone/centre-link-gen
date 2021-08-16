@@ -1,7 +1,6 @@
 {
   "files.exclude": {
     "_static": true,
-    ".next": true,
     ".vercel": true,
     ".vscode": true,
     "services": true,
