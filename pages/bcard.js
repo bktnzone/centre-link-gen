@@ -90,7 +90,7 @@ export default function BCard({ }) {
 
 	}
 	const getCardInfo = async (query) => {
-		const base_curl = `https://script.google.com/macros/s/AKfycbzIIh0H0aEpkeIgxMPT1YUzBp9f5aUBd6BadQVOPw/exec?fullname=${query.name}&lang=${query.lang}&cc=${query.cc}`;
+		const base_curl = `https://script.google.com/macros/s/AKfycbzIIh0H0aEpkeIgxMPT1YUzBp9f5aUBd6BadQVOPw/exec?fullname=${query.name}&lang=${query.lang}&cc=${query.cc}&t=2`;
 		const res = await fetch(`${base_curl}`);
 		const data = await res.json();
 		return data;
