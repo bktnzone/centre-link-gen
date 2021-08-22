@@ -34,7 +34,7 @@ const MetaTags = () => {
       />
       <meta
         name="description"
-        content="Get your Special Blessings for this Raksha Bandhan"
+        content="Get your Special Blessings for this Raksha Bandhan from Brahma Kumaris"
       />
 
       {/* Open Graph / Facebook */}
@@ -45,11 +45,11 @@ const MetaTags = () => {
       />
       <meta
         property="og:description"
-        content="Get your Special Blessings for this Raksha Bandhan"
+        content="Get your Special Blessings for this Raksha Bandhan from Brahma Kumaris"
       />
-      <meta
+    <meta
         property="og:image"
-        content="https://bk-rakhi.appdews.com/img/preview.png?"
+        content="https://bk-rakshab.appdews.com/img/raksha-banner.png"
       />
 
       {/* Twitter */}
@@ -57,7 +57,7 @@ const MetaTags = () => {
       
       <meta
         property="twitter:image"
-        content="https://bk-rakhi.appdews.com/img/preview.png"
+        content="https://bk-rakshab.appdews.com/img/raksha-banner.png"
       />
     </Head>
   );

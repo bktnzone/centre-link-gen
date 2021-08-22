@@ -141,9 +141,14 @@ export default function BCard({ }) {
 
 												{frameReady &&
 													<div className="aspect-w-16 aspect-h-9">
-														<iframe onLoad={handleVideoLoaded} src={videoUrls.nbk} width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen className="rounded"></iframe>
+														<iframe onLoad={handleVideoLoaded} src={cardInfo.videoUrl} width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen className="rounded"></iframe>
 													</div>
 												}
+
+{frameReady &&
+
+												<span class="text-xs text-gray-400 mt-4"> Video Courtesy : <a target="_blanK" class="text-blue-300" href="https://brahmakumaris.org.au/new/virtual-centre/">Brahma Kumaris, Australia</a></span>
+}
 
 												{!frameReady &&
 													<div className="w-full pt-1 pb-3 pt-3 ">
