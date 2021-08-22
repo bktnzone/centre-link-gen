@@ -141,7 +141,7 @@ export default function BCard({ }) {
 
 												{frameReady &&
 													<div className="aspect-w-16 aspect-h-9">
-														<iframe onLoad={handleVideoLoaded} src={cardInfo.videoUrl} width="640" height="360" frameBorder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" className="rounded"></iframe>
+														<iframe onLoad={handleVideoLoaded} src={cardInfo.videoUrl} width="640" height="360" frameBorder="0"  id="widget2"  allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" className="rounded"></iframe>
 													</div>
 												}
 
