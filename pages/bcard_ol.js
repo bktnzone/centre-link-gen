@@ -142,7 +142,7 @@ export default function BCard({ }) {
 
 												{!frameReady &&
 													<div className="w-full pt-1 pb-3 pt-3 ">
-														<img src="/img/chardham.png" className="animate-pulse" />
+														<img src="/img/baba-3d.png" className="animate-pulse" />
 													</div>
 												}
 												{videoReady &&

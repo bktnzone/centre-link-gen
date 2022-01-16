@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Footer from '../components/footer';
 import MetaTags from '../components/page-meta';
-
+import Slideshow from '../components/slide-show';
 
 import Select from 'react-select';
 
@@ -151,13 +151,12 @@ export default function Home({ action = '/bcard' }) {
 									<div>
 										<h1 className="text-center text-indigo-900 font-Inter animate-pulse text-2xl" >Avyakt Divas (Jan 18) 2022</h1>
 									</div>
-									<div className="-mt-6 pt-0">&nbsp;</div>
-									<img src="/img/chardham.png"   className="animate-pulse "/>
-									<div>
-										<h1 className="text-center text-indigo-900 font-Inter text-2xl" >Special Blessings</h1>
-									</div>
-
 								
+									<h1 className="text-center text-indigo-900 font-Inter text-2xl" >Special Blessings</h1>
+									<Slideshow className="rounded-full" indicators="false">
+
+									</Slideshow>
+									
 									{ !isLoaded && 
 										<div className=" w-full text-center text-sm text-indigo-900 ">
 											Loading languages...
