@@ -134,20 +134,24 @@ export default function BCard({ }) {
 
 											<div className="w-full h-auto m2">
 
-											
+												{frameReady &&
+													<div className="aspect-w-16 aspect-h-9">
+														<iframe onLoad={handleVideoLoaded} src="https://player.vimeo.com/video/582888192?color=0c88dd&title=0&byline=0&portrait=0&badge=0&autoplay=1" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen className="rounded"></iframe>
+													</div>
+												}
 
 												{!frameReady &&
 													<div className="w-full pt-1 pb-3 pt-3 ">
 														<img src="/img/chardham.png" className="animate-pulse" />
 													</div>
 												}
-												{frameReady &&
+												{videoReady &&
 													<div className="relative py-3 sm:max-w-xl sm:mx-auto">
 														<div className="float-left   transform rotate-90"><img width="65" src="/img/border-card-red.png" /></div>
 														<div className="float-right  transform rotate-180"><img width="65" src="/img/border-card-red.png" /></div>
 													</div>
 												}
-												{frameReady && (
+												{videoReady && (
 													<p className="text-md  text-red-800 font-semibold text-center mt-2 pb-2 font-Inter ">
 														{cardInfo.disp_name}
 													</p>)
@@ -156,16 +160,16 @@ export default function BCard({ }) {
 											</div>
 											<div className="w-full mb-5">
 
-												{frameReady && <div className="text-3xl text-indigo-500 text-left leading-tight h-3 hidden">“</div>}
+												{videoReady && <div className="text-3xl text-indigo-500 text-left leading-tight h-3 hidden">“</div>}
 												<p className={`${animateSlogan ? 'animate-pulse' : ''} text-md font-semibold text-gray-600 text-center px-5`}>
-													{!frameReady &&
+													{!videoReady &&
 														(<><span className="text-xs font-normal">Please stay in silence for a moment...</span>
 															<span className="text-xs font-normal block">Your card getting ready..</span>
 														</>)
 													}
 
 
-													{frameReady && (<Typed
+													{videoReady && (<Typed
 														strings={["“" + cardInfo.slogan + "”"]}
 														showCursor={false}
 														onComplete={() => { handleTextCompleted() }}

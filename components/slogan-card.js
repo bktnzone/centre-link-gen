@@ -121,13 +121,13 @@ const SloganCard = (props) => {
                 <div className="w-full mx-auto border-4 rounded-lg bg-white px-5 pt-5 pb-10 text-gray-800"  >
                   <div className="w-full h-auto mb-4">
                     <div className="w-full pt-1 pb-0 -mt-1 ">
-                      <img src="/img/bandhan.png" />
+                      <img src="/img/chardham.png" class="hidden"/>
                     </div>
                     <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-														<div className="float-left   transform rotate-90"><img width="65" src="/img/border-card-purple.png" /></div>
-														<div className="float-right  transform rotate-180"><img width="65" src="/img/border-card-purple.png" /></div>
+														<div className="float-left   transform rotate-90"><img width="65" src="/img/border-card-red.png" /></div>
+														<div className="float-right  transform rotate-180"><img width="65" src="/img/border-card-red.png" /></div>
 													</div>
-                    <p className="text-md text-purple-900 pt-5 font-semibold text-center mt-1  font-Inter">
+                    <p className="text-md text-red-900 pt-5 font-semibold text-center mt-1  font-Inter">
                     {props.cardInfo.disp_name}
                     </p>
                   </div>
@@ -137,8 +137,8 @@ const SloganCard = (props) => {
                     “{props.cardInfo.slogan}”
                     </p>
                     <div className="relative py-1 sm:max-w-xl sm:mx-auto">
-                    <div className="float-left   "><img width="65" src="/img/border-card-purple.png" /></div>
-                    <div className="float-right  transform -rotate-90"><img width="65" src="/img/border-card-purple.png" /></div>
+                    <div className="float-left   "><img width="65" src="/img/border-card-red.png" /></div>
+                    <div className="float-right  transform -rotate-90"><img width="65" src="/img/border-card-red.png" /></div>
                     </div>
 
                     <div className="text-3xl text-gray-500 text-right leading-tight h-3 -mt-3 hidden">”</div>

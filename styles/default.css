@@ -42,10 +42,14 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 .segmented-control__input:checked + .segmented-control__label {
-	background: #6d28d9;
+	background: #b71d1d;
 	color: rgb(255, 255, 255);
 }
 
+.btnColor1{
+
+  background:#b71d1d;
+}
 
 /* Sun rays*/
 
