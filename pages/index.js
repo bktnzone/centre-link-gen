@@ -149,13 +149,11 @@ export default function Home({ action = '/bcard' }) {
 
 								<div className=" flex-auto p-2 align-middle text-left h-96 min-h-full bg rounded-md ">
 									<div>
-										<h1 className="text-center text-indigo-900 font-Inter animate-pulse text-2xl" >Avyakt Divas (Jan 18) 2022</h1>
+										<h1 className="text-center text-indigo-900 font-Inter animate-pulse text-2xl" >Valentines Day (Feb 14 2022)</h1>
 									</div>
 								
-									<h1 className="text-center text-indigo-900 font-Inter text-2xl" >Special Blessings</h1>
-									<Slideshow className="rounded-full" indicators="false">
-
-									</Slideshow>
+									<h1 className="text-center text-indigo-900 font-Inter text-2xl" >Experience the Divine Love <br/> & <br/> Special Blessings  </h1>
+					
 									
 									{ !isLoaded && 
 										<div className=" w-full text-center text-sm text-indigo-900 ">
