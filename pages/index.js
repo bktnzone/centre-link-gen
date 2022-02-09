@@ -60,7 +60,7 @@ export default function Home({ action = '/bcard' }) {
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [centreInfo,setCentreInfo] = useState({});
 	const [lang, setLang] = useState('eng');
-
+	const isActive=false;
 	const [langs, setLangs] = useState([{ name: 'Hindi', code: 'hin' },{ name: 'English', code: 'eng' }]);
 	const handleParam = (setValue) => (e) => {
 		setValue(e.target.value);
@@ -156,13 +156,17 @@ export default function Home({ action = '/bcard' }) {
 									<Slideshow className="rounded-full" indicators="false">
 
 									</Slideshow>
+
+									<h4 className="btnColor1 text-center text-white hover:bg-red-400 font-bold">
+										This event has ended. Please checkout next year.
+									</h4>
 									
-									{ !isLoaded && 
+									{ !isLoaded && isActive && 
 										<div className=" w-full text-center text-sm text-indigo-900 ">
 											Loading languages...
 											</div>
 }
-{ isLoaded &&
+{ isLoaded && isActive &&
 							<div className=" w-full mt-6 flex rounded-md shadow-sm">
 					<div className="relative flex-grow focus-within:z-10">
 						<form onSubmit={handleSubmit}>
