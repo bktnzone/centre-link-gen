@@ -12,9 +12,9 @@ module.exports = {
         Inter: ['Barlow Condensed'],
       },
       colors: {
-        'skyc': '#4e18b3',
+        'skyc': '#14b8a6',
         
-        sky: colors.sky,
+        sky: colors.teal,
         cyan:  colors.cyan
       },
     },

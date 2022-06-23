@@ -105,7 +105,7 @@ export default function BCard({ }) {
 
 			<div className="relative py-3 sm:max-w-xl sm:mx-auto">
 
-				<div className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+				<div className="absolute inset-0 bg-gradient-to-r from-lime-700 to-lime-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
 				<div className="relative px-4 py-6 bg-white shadow-lg sm:rounded-3xl sm:p-2">
 					<div className="max-w-md mx-auto align-middle items-center ">
 						<div className="max-w-md mx-auto align-middle items-center ">
@@ -147,12 +147,12 @@ export default function BCard({ }) {
 												}
 												{videoReady &&
 													<div className="relative py-3 sm:max-w-xl sm:mx-auto">
-														<div className="float-left   transform rotate-90"><img width="65" src="/img/border-card-red.png" /></div>
-														<div className="float-right  transform rotate-180"><img width="65" src="/img/border-card-red.png" /></div>
+														<div className="float-left   transform rotate-90"><img width="65" src="/img/border-card-lime.png" /></div>
+														<div className="float-right  transform rotate-180"><img width="65" src="/img/border-card-lime.png" /></div>
 													</div>
 												}
 												{videoReady && (
-													<p className="text-md  text-red-800 font-semibold text-center mt-2 pb-2 font-Inter ">
+													<p className="text-md  text-lime-800 font-semibold text-center mt-2 pb-2 font-Inter ">
 														{cardInfo.disp_name}
 													</p>)
 												}
@@ -182,8 +182,8 @@ export default function BCard({ }) {
 
 												{textCompleted &&
 														<div className="relative py-1 sm:max-w-xl sm:mx-auto -mt-5">
-															<div className="float-left   "><img width="65" src="/img/border-card-red.png" /></div>
-															<div className="float-right  transform -rotate-90"><img width="65" src="/img/border-card-red.png" /></div>
+															<div className="float-left   "><img width="65" src="/img/border-card-lime.png" /></div>
+															<div className="float-right  transform -rotate-90"><img width="65" src="/img/border-card-lime.png" /></div>
 														</div>
 													}
 

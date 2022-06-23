@@ -43,13 +43,13 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 .segmented-control__input:checked + .segmented-control__label {
-	background: #b71d1d;
+	background: #14b8a6;
 	color: rgb(255, 255, 255);
 }
 
 .btnColor1{
 
-  background:#b71d1d;
+  background:#14b8a6;
 }
 
 /* Sun rays*/

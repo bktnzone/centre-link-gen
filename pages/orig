@@ -29,7 +29,7 @@ const BCard = (ctx) => {
 	//  if (!data) return <h1>Loading...</h1>
 
 	return (
-		<div className="md:flex w-full bg-red-100 bg-hero bg-opacity-100">
+		<div className="md:flex w-full bg-lime-100 bg-hero bg-opacity-100">
 			<div className="max-w-2xl mx-auto flex flex-col items-center justify-center px-4">
 				<div className=" h-screen  py-3 w-full">
 					<div className="flex items-center text-center  justify-center mt-6 -mt-2 -ml-4">
@@ -41,23 +41,23 @@ const BCard = (ctx) => {
 
 					<div className=" ">
 						<div className="containerCard" style={{ width: '100%' }}>
-							<div className="centeredCard sm:p-1 " style={{ width: '100%' }}>
+							<div className="centelimeCard sm:p-1 " style={{ width: '100%' }}>
 								<div
 									style={{ color: '#025ca1' }}
-									className="text-centered   text-lg font-extrabold font-serif"
+									className="text-centelime   text-lg font-extrabold font-serif"
 								>
 									<p className="text-center text-xs">
 										{' '}
 										Special Blessing Card - Mamma Day Jun 2021
 									</p>
-									<div className="flex items flex-col transition duration-500 ease-in-out  transform text-centered">
+									<div className="flex items flex-col transition duration-500 ease-in-out  transform text-centelime">
 										<p className="m-2">
 											{!data &&
 												'Your card is getting generated on this Special Mamma Day..'}
 										</p>
-										<p className="flex items  items-center justify-center text-centered align-center">
+										<p className="flex items  items-center justify-center text-centelime align-center">
 											<img
-												className="rounded-md transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none"
+												className="rounded-md transition transform hover:-translate-y-1 motion-limeuce:transition-none motion-limeuce:transform-none"
 												style={{ width: '100%' }}
 												src="/assets/mamma-day.gif"
 											/>

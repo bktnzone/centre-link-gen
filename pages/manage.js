@@ -24,7 +24,7 @@ export default function Manage() {
 	const [centreCode, setCentreCode] = useState('');
 	const [centreActiveDate, setCentreActiveDate] = useState('');
 	const [centreEmailId, setCentreEmailId] = useState('');
-	const [centreDispName, setCentreDispName] = useState('');
+	const [centlimeispName, setCentlimeispName] = useState('');
 	
 	
 	const handleParam = (setValue,specific) => (e) => {
@@ -33,7 +33,7 @@ export default function Manage() {
 
 			if(specific=="dt") setCentreActiveDate(e.target.value);
 			if(specific=="email") setCentreEmailId(e.target.value);
-			if(specific=="disp") setCentreDispName(e.target.value);
+			if(specific=="disp") setCentlimeispName(e.target.value);
 
 		}
 		else
@@ -53,7 +53,7 @@ export default function Manage() {
 	const updateConfig = async () => {
 		let centreLangs='';
 		let centreOtherLangs='';
-		const formData =  {"row_id":centreInfo.row_id, langs:centreLangs,otherLangs:centreOtherLangs, "active_date":centreActiveDate,"status":centreStatus, "email_id":centreEmailId,"centre_disp_name":centreDispName,"centre_link_code":centreCode};
+		const formData =  {"row_id":centreInfo.row_id, langs:centreLangs,otherLangs:centreOtherLangs, "active_date":centreActiveDate,"status":centreStatus, "email_id":centreEmailId,"centre_disp_name":centlimeispName,"centre_link_code":centreCode};
 		const params = { action: 'update-config', data: { pin: pagePin, formInput: formData } };
 		const res = await fetch(`${base_url}?d=${JSON.stringify(params)}`);
 		const data = await res.json();
@@ -105,7 +105,7 @@ export default function Manage() {
 									</div>
 									<div className="flex items-baseline mb-6">
 										<div className="space-x-2 flex">
-											<input type="text" size={25} onChange={handleParam('','disp')} className="border-2 rounded-md" value={centreDispName} />
+											<input type="text" size={25} onChange={handleParam('','disp')} className="border-2 rounded-md" value={centlimeispName} />
 										</div>
 									</div>
 									<div className="flex items-baseline">
