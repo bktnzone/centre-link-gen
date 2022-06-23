@@ -46,7 +46,7 @@ const MetaTags = () => {
       />
       <meta
         property="og:image"
-        content="https://bk-avyakt-day.appdews.com/img/preview.png?"
+        content="https://mamma-rday.vercel.app/img/preview.png?"
       />
 
       {/* Twitter */}
@@ -54,7 +54,7 @@ const MetaTags = () => {
       
       <meta
         property="twitter:image"
-        content="https://bk-avyakt-day.appdews.com/img/preview.png"
+        content="https://mamma-rday.vercel.app/img/preview.png"
       />
     </Head>
   );
