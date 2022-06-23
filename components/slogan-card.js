@@ -114,7 +114,7 @@ const SloganCard = (props) => {
             <div className=" flex-auto p-2 align-middle text-left  min-h-full rounded-md bg" >
               <div>
                 <h1 className="text-center text-green-900 font-Inter  text-2xl" >Special Blessings</h1>
-                <h3 className="text-center text-green-900 font-Inter  text-xl" >Received on the occasion of Avyakth Smrithi Divas (Jun 24) - 2022</h3>
+                <h3 className="text-center text-green-900 font-Inter  text-xl" >Received on the occasion of Mamma Avyakth Divas (Jun 24) - 2022</h3>
                 <h4 className="text-center text-green-900 font-Inter  text-xl">{props.cardInfo.centre_disp_name}</h4>
               </div>
               <div className="min-w-screen  flex items-center justify-center px-2 py-5" >
