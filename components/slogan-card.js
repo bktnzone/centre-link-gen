@@ -113,21 +113,21 @@ const SloganCard = (props) => {
 
             <div className=" flex-auto p-2 align-middle text-left  min-h-full rounded-md bg" >
               <div>
-                <h1 className="text-center text-indigo-900 font-Inter  text-2xl" >Special Blessings</h1>
-                <h3 className="text-center text-indigo-900 font-Inter  text-xl" >Received on the occasion of Avyakth Smrithi Divas (Jan 18) - 2022</h3>
-                <h4 className="text-center text-red-900 font-Inter  text-xl">{props.cardInfo.centre_disp_name}</h4>
+                <h1 className="text-center text-green-900 font-Inter  text-2xl" >Special Blessings</h1>
+                <h3 className="text-center text-green-900 font-Inter  text-xl" >Received on the occasion of Avyakth Smrithi Divas (Jun 24) - 2022</h3>
+                <h4 className="text-center text-green-900 font-Inter  text-xl">{props.cardInfo.centre_disp_name}</h4>
               </div>
               <div className="min-w-screen  flex items-center justify-center px-2 py-5" >
                 <div className="w-full mx-auto border-4 rounded-lg bg-white px-5 pt-5 pb-10 text-gray-800"  >
                   <div className="w-full h-auto mb-4">
                     <div className="w-full pt-1 pb-0 -mt-1 ">
-                      <img src="/img/baba-3d.png" class="hidden"/>
+                      <img src="/img/mamma-bless.png" class="hidden"/>
                     </div>
                     <div className="relative py-3 sm:max-w-xl sm:mx-auto">
 														<div className="float-left   transform rotate-90"><img width="65" src="/img/border-card-red.png" /></div>
 														<div className="float-right  transform rotate-180"><img width="65" src="/img/border-card-red.png" /></div>
 													</div>
-                    <p className="text-md text-red-900 pt-5 font-semibold text-center mt-1  font-Inter">
+                    <p className="text-md text-green-900 pt-5 font-semibold text-center mt-1  font-Inter">
                     {props.cardInfo.disp_name}
                     </p>
                   </div>

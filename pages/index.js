@@ -60,7 +60,7 @@ export default function Home({ action = '/bcard' }) {
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [centreInfo,setCentreInfo] = useState({});
 	const [lang, setLang] = useState('eng');
-	const isActive=false;
+	const isActive=true;
 	const [langs, setLangs] = useState([{ name: 'Hindi', code: 'hin' },{ name: 'English', code: 'eng' }]);
 	const handleParam = (setValue) => (e) => {
 		setValue(e.target.value);
@@ -127,7 +127,7 @@ export default function Home({ action = '/bcard' }) {
  
 			<MetaTags />
 			<div className="relative py-3 sm:max-w-xl sm:mx-auto">
-				<div className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+				<div className="absolute inset-0 bg-gradient-to-r from-green-700 to-green-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
 				<div className="relative px-4 py-6 bg-white shadow-lg sm:rounded-3xl sm:p-2">
 					<div className="max-w-md mx-auto align-middle items-center ">
 
@@ -136,7 +136,7 @@ export default function Home({ action = '/bcard' }) {
 								src="/img/bk-logo-2.png"
 								className="w-3/5 pl-2 md:mt-1" 
 							/>
-							<h1 className="animate-pulse -mt-4 text-right flex-auto text-sm text-indigo-900 font-thin font-Inter text-left ">
+							<h1 className="animate-pulse -mt-4 text-right flex-auto text-sm text-green-900 font-thin font-Inter text-left ">
 								{ (centreInfo && centreInfo.centre_disp_name) || "Loading..."}
 							</h1>
 
@@ -147,22 +147,23 @@ export default function Home({ action = '/bcard' }) {
 
 							<div className="py-1 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 mt-4">
 
-								<div className=" flex-auto p-2 align-middle text-left h-96 min-h-full bg rounded-md ">
+								<div className=" flex-auto p-2 pt-16 align-middle text-left h-96 min-h-full bg rounded-md ">
 									<div>
-										<h1 className="text-center text-indigo-900 font-Inter animate-pulse text-2xl" >Avyakt Divas (Jan 18) 2022</h1>
+										<h1 className="text-center text-green-900 font-Inter animate-pulse text-2xl" >Mamma Avyakt Divas </h1>
+										<h1 className="text-center text-green-900 font-Inter animate-pulse text-2xl" >Jun 24 - 2022</h1>
 									</div>
 								
-									<h1 className="text-center text-indigo-900 font-Inter text-2xl" >Special Blessings</h1>
-									<Slideshow className="rounded-full" indicators="false">
+									<h1 className="text-center text-green-900 font-Inter text-2xl" >Special Blessings</h1>
+									{/* <Slideshow className="rounded-full" indicators="false">
 
-									</Slideshow>
+									</Slideshow> */}
 
-									<h4 className="btnColor1 text-center text-white hover:bg-red-400 font-bold">
+									{/* <h4 className="btnColor1 text-center text-white hover:bg-green-400 font-bold">
 										This event has ended. Please checkout next year.
-									</h4>
+									</h4> */}
 									
 									{ !isLoaded && isActive && 
-										<div className=" w-full text-center text-sm text-indigo-900 ">
+										<div className=" w-full text-center text-sm text-green-900 ">
 											Loading languages...
 											</div>
 }
@@ -170,7 +171,7 @@ export default function Home({ action = '/bcard' }) {
 							<div className=" w-full mt-6 flex rounded-md shadow-sm">
 					<div className="relative flex-grow focus-within:z-10">
 						<form onSubmit={handleSubmit}>
-							<div className="w-full mt-1 text-center text-indigo-900">
+							<div className="w-full mt-1 text-center text-green-900">
 
 							<ul className="segmented-control">
 						
@@ -241,7 +242,7 @@ export default function Home({ action = '/bcard' }) {
 								</div>
 								<button
 									onClick={handleSubmit}
-									className="btnColor1 text-white hover:bg-red-600 font-bold  pl-2 rounded-r-md shadow hover:shadow-md outline-none focus:outline-none mr-1 pr-2 text-sm"
+									className="btnColor1 text-white hover:bg-green-600 font-bold  pl-2 rounded-r-md shadow hover:shadow-md outline-none focus:outline-none mr-1 pr-2 text-sm"
 									type="button"
 									style={{ transition: 'all .15s ease' }}
 								>

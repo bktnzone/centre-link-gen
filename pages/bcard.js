@@ -129,12 +129,12 @@ export default function BCard({}) {
       </Head>
 
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-green-700 to-green-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
         <div className="relative px-4 py-6 bg-white shadow-lg sm:rounded-3xl sm:p-2">
           <div className="max-w-md mx-auto align-middle items-center ">
             <div className="max-w-md mx-auto align-middle items-center ">
               <img src="/img/bk-logo-2.png" className="w-3/5 pl-2 -mt-3 " />
-              <h1 className="animate-pulse -mt-4 text-right flex-auto text-sm text-indigo-900 font-thin font-Inter text-left ">
+              <h1 className="animate-pulse -mt-4 text-right flex-auto text-sm text-green-900 font-thin font-Inter text-left ">
                 {centreName || "Loading..."}
               </h1>
             </div>
@@ -148,7 +148,7 @@ export default function BCard({}) {
                       <div className="w-full h-auto m2" >
 					  	<div className="w-full pt-1 pb-0 pt-0 ">
                           <img
-                            src="/img/baba-3d.png"
+                            src="/img/mamma-bless.png"
                             className="animate-pulse"
                           />
                         </div>
@@ -164,14 +164,14 @@ export default function BCard({}) {
                           </div>
                         )}
                         {frameReady && (
-                          <p className="text-md  text-red-800 font-semibold text-center mt-2 pb-2 font-Inter ">
+                          <p className="text-md  text-green-800 font-semibold text-center mt-2 pb-2 font-Inter ">
                             {cardInfo.disp_name}
                           </p>
                         )}
                       </div>
                       <div className="w-full mb-5">
                         {frameReady && (
-                          <div className="text-3xl text-indigo-500 text-left leading-tight h-3 hidden">
+                          <div className="text-3xl text-green-500 text-left leading-tight h-3 hidden">
                             “
                           </div>
                         )}
@@ -215,7 +215,7 @@ export default function BCard({}) {
                         )}
 
                         {videoReady && (
-                          <div className="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3 hidden">
+                          <div className="text-3xl text-green-500 text-right leading-tight h-3 -mt-3 hidden">
                             ”
                           </div>
                         )}

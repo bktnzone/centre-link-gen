@@ -29,7 +29,7 @@ const BCard = (ctx) => {
 	//  if (!data) return <h1>Loading...</h1>
 
 	return (
-		<div className="md:flex w-full bg-red-100 bg-hero bg-opacity-100">
+		<div className="md:flex w-full bg-green-100 bg-hero bg-opacity-100">
 			<div className="max-w-2xl mx-auto flex flex-col items-center justify-center px-4">
 				<div className=" h-screen  py-3 w-full">
 					<div className="flex items-center text-center  justify-center mt-6 -mt-2 -ml-4">

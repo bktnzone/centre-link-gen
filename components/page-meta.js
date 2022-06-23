@@ -11,10 +11,10 @@ const MetaTags = () => {
         name="apple-mobile-web-app-status-bar-style"
         content="black-translucent"
       />
-      <meta name="theme-color" content="#b71d1d" />
+      <meta name="theme-color" content="#15803d" />
 
       <title>
-        Brahma Kumaris - Avyakt Divas 2022 - Blessing Card
+        Brahma Kumaris - Mamma Avyakt Divas 2022 - Blessing Card
       </title>
       <meta
         name="description"
@@ -27,22 +27,22 @@ const MetaTags = () => {
       {/* Primary Meta Tags */}
       <meta
         name="title"
-        content="Brahma Kumaris - Avyakt Divas 2022 - Blessing Card"
+        content="Brahma Kumaris - Mamma Avyakt Divas 2022 - Blessing Card"
       />
       <meta
         name="description"
-        content="Get your Special Blessings for this Avyakt Divas 2022"
+        content="Get your Special Blessings for this Mamma Avyakt Divas 2022"
       />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta
         property="og:title"
-        content="Brahma Kumaris - Online Avyakt Divas 2022 - Blessing Card"
+        content="Brahma Kumaris - Online Mamma Avyakt Divas 2022 - Blessing Card"
       />
       <meta
         property="og:description"
-        content="Get your Special Blessings for this Avyakt Divas 2022"
+        content="Get your Special Blessings for this Mamma Avyakt Divas 2022"
       />
       <meta
         property="og:image"
