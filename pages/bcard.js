@@ -148,7 +148,7 @@ export default function BCard({}) {
                       <div className="w-full h-auto m2" >
 					  	<div className="w-full pt-1 pb-0 pt-0 ">
                           <img
-                            src="/img/mamma-bless.png"
+                            src="/img/mamma-bless.jpg"
                             className="animate-pulse"
                           />
                         </div>

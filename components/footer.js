@@ -6,7 +6,7 @@ function Footer() {
       </span>
   </p>
   <div className="text-xs text-gray-500">
-   @Copyrights 2022
+   @Copyrights 2023
   </div>
   <div className="text-xs text-gray-500">
   <a className="text-cyan-600 hover:text-cyan-700" href="https://www.brahmakumaris.com"> brahmakumaris.com </a>

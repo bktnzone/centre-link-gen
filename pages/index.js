@@ -150,7 +150,7 @@ export default function Home({ action = '/bcard' }) {
 								<div className=" flex-auto p-2 pt-16 align-middle text-left h-96 min-h-full bg rounded-md ">
 									<div>
 										<h1 className="text-center text-green-900 font-Inter animate-pulse text-2xl" >Mamma Avyakt Divas </h1>
-										<h1 className="text-center text-green-900 font-Inter animate-pulse text-2xl" >Jun 24 - 2022</h1>
+										<h1 className="text-center text-green-900 font-Inter animate-pulse text-2xl" >Jun 24 - 2023</h1>
 									</div>
 								
 									<h1 className="text-center text-green-900 font-Inter text-2xl" >Special Blessings</h1>

@@ -14,7 +14,7 @@ const MetaTags = () => {
       <meta name="theme-color" content="#15803d" />
 
       <title>
-        Brahma Kumaris - Mamma Avyakt Divas 2022 - Blessing Card
+        Brahma Kumaris - Mamma Avyakt Divas 2023 - Blessing Card
       </title>
       <meta
         name="description"
@@ -27,26 +27,26 @@ const MetaTags = () => {
       {/* Primary Meta Tags */}
       <meta
         name="title"
-        content="Brahma Kumaris - Mamma Avyakt Divas 2022 - Blessing Card"
+        content="Brahma Kumaris - Mamma Avyakt Divas 2023 - Blessing Card"
       />
       <meta
         name="description"
-        content="Get your Special Blessings for this Mamma Avyakt Divas 2022"
+        content="Get your Special Blessings for this Mamma Avyakt Divas 2023"
       />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta
         property="og:title"
-        content="Brahma Kumaris - Online Mamma Avyakt Divas 2022 - Blessing Card"
+        content="Brahma Kumaris - Online Mamma Avyakt Divas 2023 - Blessing Card"
       />
       <meta
         property="og:description"
-        content="Get your Special Blessings for this Mamma Avyakt Divas 2022"
+        content="Get your Special Blessings for this Mamma Avyakt Divas 2023"
       />
       <meta
         property="og:image"
-        content="https://mamma-rday.vercel.app/img/preview.png?"
+        content="https://mamma-rday.vercel.app/img/preview.jpg?"
       />
 
       {/* Twitter */}
@@ -54,7 +54,7 @@ const MetaTags = () => {
       
       <meta
         property="twitter:image"
-        content="https://mamma-rday.vercel.app/img/preview.png"
+        content="https://mamma-rday.vercel.app/img/preview.jpg"
       />
     </Head>
   );
